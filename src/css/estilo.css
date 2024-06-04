@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family:sans-serif;
+   
+}
+
+body{
+    background-image: linear-gradient(to top,#10454F,#506266,#818274);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+}
