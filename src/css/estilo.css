@@ -18,3 +18,27 @@ body{
     flex-direction: column;
 
 }
+#below-cover{
+    display: flex; /* ele é um container por(row)*/
+    flex-direction: row; /*itens e linhas*/ 
+    justify-content: space-between; /* alinha o itens ,da espaçamento entre os itens*/
+    align-items: center;
+}
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.button{
+    font-size: 2em;
+}
+#like {
+    font-size: 1.5em;
+}
+.button-navigate {
+    font-size: 2.5em;
+}
+.button-biggest {
+    font-size: 3.5em;
+}
