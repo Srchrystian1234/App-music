@@ -19,9 +19,12 @@ body{
     align-items: center;
 
 }
-.music-container{
-
+button{
+   background-color: inherit;/*herda do pai*/
+   border: none;
+   color: inherit; 
 }
+
 #playlist-title {
     display: flex;
     flex-direction: row;
@@ -42,9 +45,7 @@ body{
     font-size: 1.6em;
     font-weight: bolder;
 }
-#band-name {
-    
-}
+
 .light-color {
     color: rgb(139,153,156);
 }
