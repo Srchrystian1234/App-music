@@ -16,13 +16,50 @@ body{
     color: white;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
+}
+.music-container{
+
+}
+#playlist-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin:1em 0em 4em 0em;
+}
+#cover {
+    width: 450px;
 }
 #below-cover{
     display: flex; /* ele é um container por(row)*/
     flex-direction: row; /*itens e linhas*/ 
     justify-content: space-between; /* alinha o itens ,da espaçamento entre os itens*/
     align-items: center;
+    margin: 3em 0em 1em 0em;
+}
+#song-name {
+    font-size: 1.6em;
+    font-weight: bolder;
+}
+#band-name {
+    
+}
+.light-color {
+    color: rgb(139,153,156);
+}
+#progress-bar {
+    background-color: rgb(139,153,156);
+    height: 3px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+}
+#current-progress {
+    background-color: white;
+    height: inherit;
+    width: 50%;
+    border-radius: inherit;
 }
 .button-container{
     display: flex;
@@ -37,8 +74,8 @@ body{
     font-size: 1.5em;
 }
 .button-navigate {
-    font-size: 2.5em;
+    font-size: 3em;
 }
 .button-biggest {
-    font-size: 3.5em;
+    font-size: 4em;
 }
