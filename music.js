@@ -4,7 +4,8 @@ const play = window.document.getElementById('play')
 const bandName = window.document.getElementById('band-name');
 const coverDisc = window.document.getElementById('cover')
 const next = window.document.getElementById('next')
-const previous = window.document.getElementById('previous')
+const previous = window.document.getElementById('previous');
+const currentProgress = window.document.getElementById('current-progress')
 
 const IWantItThatWay = {
     songName: 'I Want It That Way',
@@ -13,7 +14,7 @@ const IWantItThatWay = {
 }
 
 const ZumZumZum = {
-    songName: 'zumzumzum',
+    songName: 'Zum Zum Zum',
     artist: 'Teto raps',
     file:'Teto'
 }
@@ -88,9 +89,20 @@ function nextSong(){
     playSong();
   
 }
+function updateProgressBar(){
+   /* song.currentTime  temo atual da musica
+    song.duration duração do som */
+    const barWidht = (song.currentTime/song.duration)*100;
+
+    currentProgress.style.setProperty('--progress', `${barWidht}%`)
+}
+
 initializeSong();
+
 play.addEventListener('click',PlaypauseDecider);
 
-previous.addEventListener('click',previousSong)
+previous.addEventListener('click',previousSong);
 
-next.addEventListener('click',nextSong)
+next.addEventListener('click',nextSong);
+
+song.addEventListener('timeupdate', updateProgressBar);

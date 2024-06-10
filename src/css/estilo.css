@@ -33,6 +33,7 @@ button{
 }
 #cover {
     width: 450px;
+    height: 350px;
 }
 #below-cover{
     display: flex; /* ele é um container por(row)*/
@@ -57,9 +58,10 @@ button{
     margin-bottom: 1.5em;
 }
 #current-progress {
+    --progress:0%;/*variavel*/
     background-color: white;
     height: inherit;
-    width: 50%;
+    width: var(--progress);
     border-radius: inherit;
 }
 .button-container{
