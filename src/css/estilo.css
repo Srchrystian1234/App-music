@@ -47,7 +47,13 @@ button{
     font-size: 1.6em;
     font-weight: bolder;
 }
-
+#time-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: smaller;
+    margin-top:0.5em;
+}
 .light-color {
     color: rgb(139,153,156);
 }
@@ -66,7 +72,6 @@ button{
     border-radius: inherit;
 }
 #progress-container{
-    padding-bottom: 1.5em;
     cursor: pointer;
     
 }

@@ -10,6 +10,10 @@ const currentProgress = window.document.getElementById('current-progress')
 const progressContainer = window.document.getElementById('progress-container')
 const shuffleButton = window.document.getElementById('shuffle');
 
+const Repeatbutton = window.document.getElementById('repeat')
+const SongTime = window.document.getElementById('song-time')
+const totalTime = window.document.getElementById('total-time')
+
 const IWantItThatWay = {
     songName: 'I Want It That Way',
     artist: 'Backstreet boys',
@@ -114,12 +118,13 @@ function nextSong(){
     playSong();
   
 }
-function updateProgressBar(){
+function updateProgress(){
    /* song.currentTime  temo atual da musica
     song.duration duração do som */
     const barWidht = (song.currentTime/song.duration)*100;
 
-    currentProgress.style.setProperty('--progress', `${barWidht}%`)
+    currentProgress.style.setProperty('--progress', `${barWidht}%`);
+    SongTime.innerHTML = toHHMMSS(song.currentTime);
 }
 
 function jumpTo (event){
@@ -177,6 +182,50 @@ function shuffleButtonClicked (){ //funcao que faz atribuir a ação de funciona
         shuffleButton.classList.remove('button-active')
     }
 }
+let isRepeat = false
+
+// essa funcao que vai ver se o botao essa clicado ou nao 
+function repeatButtonClicked(){
+    if(isRepeat === false){
+        //caso seja falso ele vai colocar o botao verde 
+        Repeatbutton.classList.add('button-active')
+        // e vai deixar como true
+        isRepeat = true
+        // e vai executar a funcao de avançar ou repeti
+        
+        
+    }else{
+        Repeatbutton.classList.remove('button-active')
+        isRepeat = false;
+        
+    }
+}
+// essa funcao decide se vai tocar a proxima ou repeti 
+function nextOrRepeat(){
+    //caso seja falso ,ele vai pedi pra tocar a proxima musica 
+    if(isRepeat === false){
+    //proxima musica
+        nextSong();
+    }else{
+        //repet a musica 
+        playSong();
+        
+    }
+
+}
+function toHHMMSS(originalNumber){
+    let hours = Math.floor(originalNumber/3600)
+    let min = Math.floor((originalNumber - hours * 3600)/60)
+    let seconds = Math.floor(originalNumber - hours * 3600 - min*60)
+   return `${hours.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`
+}
+
+function updateTotalTime(){
+    
+    totalTime.innerHTML = toHHMMSS(song.duration);
+}
+
+
 initializeSong();
 
 play.addEventListener('click',PlaypauseDecider);
@@ -185,10 +234,13 @@ previous.addEventListener('click',previousSong);
 
 next.addEventListener('click',nextSong);
 
-song.addEventListener('timeupdate', updateProgressBar);
-
+song.addEventListener('timeupdate', updateProgress);
+song.addEventListener('ended', nextOrRepeat); // é o momento em que avisa quando a musica termina e pede um o que fazer apos termina
+song.addEventListener('loadedmetadata',updateTotalTime) 
 progressContainer.addEventListener('click',jumpTo);// chaamada pro clica na barra de progresso
 
 shuffleButton.addEventListener('click', shuffleButtonClicked);
+Repeatbutton.addEventListener('click', repeatButtonClicked);// botao de ativa o modo repeat ou no-repeat
+
 
 Like.addEventListener('click',Clique)
