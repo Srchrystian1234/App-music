@@ -23,6 +23,7 @@ button{
    background-color: inherit;/*herda do pai*/
    border: none;
    color: inherit; 
+   cursor: pointer;
 }
 
 #playlist-title {
@@ -66,6 +67,7 @@ button{
 }
 #progress-container{
     padding-bottom: 1.5em;
+    cursor: pointer;
     
 }
 .button-container{

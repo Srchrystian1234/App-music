@@ -1,5 +1,6 @@
 const songName = window.document.getElementById('song-name');                              
 const song = window.document.getElementById('audio');
+const Like = window.document.getElementById('like')
 const play = window.document.getElementById('play')
 const bandName = window.document.getElementById('band-name');
 const coverDisc = window.document.getElementById('cover')
@@ -29,6 +30,22 @@ let isPlaying = false
 
 const playlist = [IWantItThatWay,ZumZumZum,SoldaMeiaNoite]
 let index = 0;
+
+let isLike = true
+let Clique = ()=>{
+
+    if(isLike === true){
+        Like.querySelector('.bi').classList.remove('bi-heart')
+        Like.querySelector('.bi').classList.add('bi-heart-fill')
+
+        isLike = false
+    }else{
+        Like.querySelector('.bi').classList.remove('bi-heart-fill')
+        Like.querySelector('.bi').classList.add('bi-heart')
+        isLike = true
+    }
+
+}
 
 function playSong (){
    
@@ -117,3 +134,5 @@ next.addEventListener('click',nextSong);
 song.addEventListener('timeupdate', updateProgressBar);
 
 progressContainer.addEventListener('click',jumpTo);// chaamada pro clica na barra de progresso
+
+Like.addEventListener('click',Clique)
