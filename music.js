@@ -6,6 +6,7 @@ const coverDisc = window.document.getElementById('cover')
 const next = window.document.getElementById('next')
 const previous = window.document.getElementById('previous');
 const currentProgress = window.document.getElementById('current-progress')
+const progressContainer = window.document.getElementById('progress-container')
 
 const IWantItThatWay = {
     songName: 'I Want It That Way',
@@ -97,6 +98,14 @@ function updateProgressBar(){
     currentProgress.style.setProperty('--progress', `${barWidht}%`)
 }
 
+function jumpTo (event){
+  const widht =  progressContainer.clientWidth//clientWidth é a largura  da barrra de progresso total
+  const clickPosition = event.offsetX // o tamanho em pixels da largura da onde foi clicada a barra de progresso
+
+  const jumpToTime = (clickPosition/widht)* song.duration;// a divisao do local aonde clicamos pela largura total, multiplicado pela duração do audio 
+  song.currentTime = jumpToTime // apos fazer a conta, jogamos o resultado dentro da tempo atual da musica
+
+}
 initializeSong();
 
 play.addEventListener('click',PlaypauseDecider);
@@ -106,3 +115,5 @@ previous.addEventListener('click',previousSong);
 next.addEventListener('click',nextSong);
 
 song.addEventListener('timeupdate', updateProgressBar);
+
+progressContainer.addEventListener('click',jumpTo);// chaamada pro clica na barra de progresso

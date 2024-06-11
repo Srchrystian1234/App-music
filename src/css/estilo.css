@@ -55,7 +55,7 @@ button{
     height: 3px;
     width: 100%;
     border-radius: 10px;
-    margin-bottom: 1.5em;
+    
 }
 #current-progress {
     --progress:0%;/*variavel*/
@@ -63,6 +63,10 @@ button{
     height: inherit;
     width: var(--progress);
     border-radius: inherit;
+}
+#progress-container{
+    padding-bottom: 1.5em;
+    
 }
 .button-container{
     display: flex;
