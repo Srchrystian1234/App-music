@@ -88,3 +88,6 @@ button{
 .button-biggest {
     font-size: 4em;
 }
+.button-active {
+    color: rgb(0, 128, 62);
+}
