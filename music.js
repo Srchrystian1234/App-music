@@ -1,6 +1,8 @@
+//primeira parte de tudo e chamado de acordo com a necessidade 
+
 const songName = window.document.getElementById('song-name');                              
 const song = window.document.getElementById('audio');
-const Like = window.document.getElementById('like')
+const LikeButton = window.document.getElementById('like')
 const play = window.document.getElementById('play')
 const bandName = window.document.getElementById('band-name');
 const coverDisc = window.document.getElementById('cover')
@@ -17,50 +19,56 @@ const totalTime = window.document.getElementById('total-time')
 const IWantItThatWay = {
     songName: 'I Want It That Way',
     artist: 'Backstreet boys',
-    file:'Backs'
-}
+    file:'Backs',
+    Liked: true,
+};
 
 const ZumZumZum = {
     songName: 'Zum Zum Zum',
     artist: 'Teto raps',
-    file:'Teto'
-}
+    file:'Teto',
+    Liked:true,
+};
 const SoldaMeiaNoite = {
     songName: 'Sol da Meia Noite',
     artist: 'Rosa de Saron',
-    file:'Rosa'
+    file:'Rosa',
+    Liked: true,
+
 }
 
 let isPlaying = false
-
-const playlist = [IWantItThatWay,ZumZumZum,SoldaMeiaNoite] // array original
-
-let sortedPlaylist = [...playlist] //criando um clone para não alterar na original,com isso consigo brincar com essa, sem alterar o array original 
-
 let index = 0;
 let isShuffled = false
 let isLike = true
-let Clique = ()=>{
 
-    if(isLike === true){
-        Like.querySelector('.bi').classList.remove('bi-heart')
-        Like.querySelector('.bi').classList.add('bi-heart-fill')
+const playlist = JSON.parse(localStorage.getItem('playlist')) ?? [IWantItThatWay,ZumZumZum,SoldaMeiaNoite]  // array original
 
-        isLike = false
-    }else{
-        Like.querySelector('.bi').classList.remove('bi-heart-fill')
-        Like.querySelector('.bi').classList.add('bi-heart')
-        isLike = true
-    }
+let sortedPlaylist = [...playlist] //criando um clone para não alterar na original,com isso consigo brincar com essa, sem alterar o array original 
 
+var LikeButtonRender = ()=>{
+  if (sortedPlaylist[index].Liked === false){
+        LikeButton.querySelector('.bi').classList.remove('bi-heart')
+        LikeButton.querySelector('.bi').classList.add('bi-heart-fill')
+        LikeButton.classList.add('button-active')
+       
+        
+  }else{
+    LikeButton.querySelector('.bi').classList.remove('bi-heart-fill')
+    LikeButton.querySelector('.bi').classList.add('bi-heart')
+    LikeButton.classList.remove('button-active')
+    
+  }
 }
+        
 
 function playSong (){
-   
+   //play de tocar a musica 
+   // pedido pra troca a o icon de (play) para (pause)
         play.querySelector('.bi').classList.remove('bi-play-circle-fill')
         play.querySelector('.bi').classList.add('bi-pause-circle-fill')
-         song.play();
-         
+         song.play(); //evento de tocar
+            //criad
          isPlaying = true;
     
 }
@@ -90,6 +98,7 @@ function initializeSong (){
     song.src = `src/Songs/${sortedPlaylist[index].file}.mp3`;
     songName.innerHTML = `${sortedPlaylist[index].songName}`
     bandName.innerHTML = sortedPlaylist[index].artist;
+    LikeButtonRender(); //inicia por padrao
 }
 
 function previousSong(){
@@ -224,6 +233,18 @@ function updateTotalTime(){
     
     totalTime.innerHTML = toHHMMSS(song.duration);
 }
+function LikeButtonClicked(){
+    if(sortedPlaylist[index].Liked === true){
+        sortedPlaylist[index].Liked =false
+        
+
+    }else{
+    sortedPlaylist[index].Liked = true
+   
+    }
+    LikeButtonRender();
+    localStorage.setItem('playlist', JSON.stringify(playlist))
+ }
 
 
 initializeSong();
@@ -243,4 +264,4 @@ shuffleButton.addEventListener('click', shuffleButtonClicked);
 Repeatbutton.addEventListener('click', repeatButtonClicked);// botao de ativa o modo repeat ou no-repeat
 
 
-Like.addEventListener('click',Clique)
+LikeButton.addEventListener('click',LikeButtonClicked)
