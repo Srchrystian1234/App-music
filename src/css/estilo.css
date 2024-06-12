@@ -1,38 +1,39 @@
 @charset "UTF-8";
-
+/* funcao de reset de pagina(pagina inicial)*/
 *{
     margin: 0px;
     padding: 0px;
     font-family:sans-serif;
    
 }
-
+/* corpo do projeto */
 body{
+    
     background-image: linear-gradient(to top,#10454F,#506266,#818274);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 100vh;
+    height: 100vh;/* altura limite da pagina*/
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; /* container display flex (ele ja vem pre definido com flex direction:row  */
+    flex-direction: column; /* direcao dos atributos do site ,nesse coloca em colunas*/ 
+    align-items: center;/*alinhamento dos items no centro*/
 
 }
-button{
+button{ /* estilizações do buttoes em massa */
    background-color: inherit;/*herda do pai*/
-   border: none;
+   border: none; 
    color: inherit; 
-   cursor: pointer;
+   cursor: pointer; /* ponteiro*/
 }
 
-#playlist-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin:1em 0em 4em 0em;
+#playlist-title { /* div titulo principal*/
+    display: flex; /* container display flex (ele ja vem pre definido com flex direction:row  */
+    flex-direction: row;/* direcao dos atributos do site ,nesse coloca em linhas*/ 
+    justify-content: center; /*justifica o texto e alinha ao centro */
+    margin:1em 0em 4em 0em; 
 }
-#cover {
+#cover { /* dimensoes de limite da imagem*/
     width: 450px;
     height: 350px;
 }
@@ -40,35 +41,35 @@ button{
     display: flex; /* ele é um container por(row)*/
     flex-direction: row; /*itens e linhas*/ 
     justify-content: space-between; /* alinha o itens ,da espaçamento entre os itens*/
-    align-items: center;
+    align-items: center;/* alinhas dos itens*/
     margin: 3em 0em 1em 0em;
 }
-#song-name {
+#song-name { 
     font-size: 1.6em;
     font-weight: bolder;
 }
-#time-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+#time-box{ /* estilização do tempo de exibição do audio*/
+    display: flex;/* ele é um container por(row)*/
+    flex-direction: row;/*itens e linhas*/
+    justify-content: space-between; /* da espaçamento iguais entre os itens*/
     font-size: smaller;
     margin-top:0.5em;
 }
-.light-color {
+.light-color { /* formataçaõ na cor */
     color: rgb(139,153,156);
 }
-#progress-bar {
+#progress-bar { /* estilizacao da barra de progresso*/
     background-color: rgb(139,153,156);
     height: 3px;
     width: 100%;
     border-radius: 10px;
     
 }
-#current-progress {
-    --progress:0%;/*variavel*/
+#current-progress { /* estilizacao da barra dinamica da barra de progresso*/
+    --progress:0%;/*variavel consigo usar em qualquer atributo de pixels */
     background-color: white;
     height: inherit;
-    width: var(--progress);
+    width: var(--progress); 
     border-radius: inherit;
 }
 #progress-container{
@@ -76,12 +77,12 @@ button{
     
 }
 .button-container{
-    display: flex;
+    display: flex; /* ele é um container por(row)*/
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-around; /* ele dar o espaço ao redor*/
     align-items: center;
 }
-.button{
+.button{ /* tamanho dos buttoes*/
     font-size: 2em;
 }
 #like {
